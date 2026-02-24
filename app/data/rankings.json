@@ -1,0 +1,682 @@
+{
+  "generated_at": "2026-02-24T07:29:02.154464",
+  "cities": [
+    {
+      "name": "Chennai",
+      "aqi": 407,
+      "category": "Severe",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 49,
+        "PM10": 407,
+        "NO2": 22,
+        "O3": 10,
+        "CO": 0
+      },
+      "data": {
+        "PM2_5": 29.64,
+        "PM10": 684.14,
+        "NO2": 17.653,
+        "CO": 0.0,
+        "O3": 9.91,
+        "Temperature_2m_C": 26.6,
+        "Relative_Humidity_%": 81.0,
+        "Wind_Speed_10m": 3.7,
+        "Surface_Pressure_hPa": 1009.9,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 29.64,
+      "lat": 13.0836939,
+      "lng": 80.270186,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.483138"
+    },
+    {
+      "name": "Gurugram",
+      "aqi": 402,
+      "category": "Severe",
+      "dominant_pollutant": "PM2_5",
+      "sub_indices": {
+        "PM2_5": 402,
+        "PM10": 401,
+        "NO2": 44,
+        "O3": 20,
+        "CO": 97
+      },
+      "data": {
+        "PM2_5": 288.0,
+        "PM10": 445.0,
+        "NO2": 35.476,
+        "CO": 1.935,
+        "O3": 19.69,
+        "Temperature_2m_C": 20.6,
+        "Relative_Humidity_%": 72.0,
+        "Wind_Speed_10m": 1.8,
+        "Surface_Pressure_hPa": 1010.6,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 288.0,
+      "lat": 28.4646148,
+      "lng": 77.0299194,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.591129"
+    },
+    {
+      "name": "Bengaluru",
+      "aqi": 260,
+      "category": "Poor",
+      "dominant_pollutant": "O3",
+      "sub_indices": {
+        "PM2_5": 28,
+        "PM10": 83,
+        "NO2": 24,
+        "O3": 260,
+        "CO": 16
+      },
+      "data": {
+        "PM2_5": 17.0,
+        "PM10": 83.0,
+        "NO2": 18.8,
+        "CO": 0.321,
+        "O3": 191.8,
+        "Temperature_2m_C": 23.0,
+        "Relative_Humidity_%": 57.0,
+        "Wind_Speed_10m": 9.3,
+        "Surface_Pressure_hPa": 1008.6,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 17.0,
+      "lat": 12.9767936,
+      "lng": 77.590082,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.417194"
+    },
+    {
+      "name": "Guwahati",
+      "aqi": 257,
+      "category": "Poor",
+      "dominant_pollutant": "PM2_5",
+      "sub_indices": {
+        "PM2_5": 257,
+        "PM10": 135,
+        "NO2": 1,
+        "O3": 17,
+        "CO": 38
+      },
+      "data": {
+        "PM2_5": 106.95,
+        "PM10": 152.0,
+        "NO2": 0.451,
+        "CO": 0.767,
+        "O3": 17.05,
+        "Temperature_2m_C": 23.7,
+        "Relative_Humidity_%": 53.0,
+        "Wind_Speed_10m": 0.7,
+        "Surface_Pressure_hPa": 1006.1,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 106.95,
+      "lat": 26.1805978,
+      "lng": 91.753943,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.657316"
+    },
+    {
+      "name": "Amaravati",
+      "aqi": 210,
+      "category": "Poor",
+      "dominant_pollutant": "NO2",
+      "sub_indices": {
+        "PM2_5": 30,
+        "PM10": 59,
+        "NO2": 210,
+        "O3": 23,
+        "CO": 23
+      },
+      "data": {
+        "PM2_5": 18.0,
+        "PM10": 58.0,
+        "NO2": 189.316,
+        "CO": 0.469,
+        "O3": 22.7,
+        "Temperature_2m_C": 30.3,
+        "Relative_Humidity_%": 53.0,
+        "Wind_Speed_10m": 14.0,
+        "Surface_Pressure_hPa": 1006.4,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 18.0,
+      "lat": 16.494222,
+      "lng": 80.5105858,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.358460"
+    },
+    {
+      "name": "Delhi",
+      "aqi": 204,
+      "category": "Poor",
+      "dominant_pollutant": "PM2_5",
+      "sub_indices": {
+        "PM2_5": 204,
+        "PM10": 165,
+        "NO2": 110,
+        "O3": 25,
+        "CO": 102
+      },
+      "data": {
+        "PM2_5": 91.0,
+        "PM10": 197.0,
+        "NO2": 89.112,
+        "CO": 2.061,
+        "O3": 24.8,
+        "Temperature_2m_C": 19.8,
+        "Relative_Humidity_%": 78.0,
+        "Wind_Speed_10m": 1.8,
+        "Surface_Pressure_hPa": 1009.8,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 91.0,
+      "lat": 28.6138954,
+      "lng": 77.2090057,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.565914"
+    },
+    {
+      "name": "Chandigarh",
+      "aqi": 146,
+      "category": "Moderate",
+      "dominant_pollutant": "O3",
+      "sub_indices": {
+        "PM2_5": 89,
+        "PM10": 90,
+        "NO2": 112,
+        "O3": 146,
+        "CO": 87
+      },
+      "data": {
+        "PM2_5": 53.0,
+        "PM10": 90.0,
+        "NO2": 90.804,
+        "CO": 1.74,
+        "O3": 131.0
+      },
+      "pm25": 53.0,
+      "lat": 30.7334421,
+      "lng": 76.7797143,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.457901"
+    },
+    {
+      "name": "Amritsar",
+      "aqi": 145,
+      "category": "Moderate",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 144,
+        "PM10": 145,
+        "NO2": 128,
+        "O3": 35,
+        "CO": 51
+      },
+      "data": {
+        "PM2_5": 73.05,
+        "PM10": 167.0,
+        "NO2": 107.611,
+        "CO": 1.008,
+        "O3": 34.58,
+        "Temperature_2m_C": 24.4,
+        "Relative_Humidity_%": 46.0,
+        "Wind_Speed_10m": 4.3,
+        "Surface_Pressure_hPa": 1007.7,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 73.05,
+      "lat": 31.6356659,
+      "lng": 74.8787496,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.391104"
+    },
+    {
+      "name": "Mumbai",
+      "aqi": 125,
+      "category": "Moderate",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 96,
+        "PM10": 125,
+        "NO2": 14,
+        "O3": 28,
+        "CO": 25
+      },
+      "data": {
+        "PM2_5": 57.78,
+        "PM10": 136.96,
+        "NO2": 11.524,
+        "CO": 0.504,
+        "O3": 28.46,
+        "Temperature_2m_C": 26.4,
+        "Relative_Humidity_%": 63.0,
+        "Wind_Speed_10m": 1.8,
+        "Surface_Pressure_hPa": 1008.7,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 57.78,
+      "lat": 19.054999,
+      "lng": 72.8692035,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.932309"
+    },
+    {
+      "name": "Ahmedabad",
+      "aqi": 116,
+      "category": "Moderate",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 105,
+        "PM10": 116,
+        "NO2": 0,
+        "O3": 0,
+        "CO": 0
+      },
+      "data": {
+        "Datetime": "2026-02-24T12:00:00",
+        "PM2_5": 61.082763671875,
+        "PM10": 122.17,
+        "NO2": 0.0,
+        "CO": 0.0,
+        "O3": 0.0,
+        "is_predicted": 1.0,
+        "Temperature_2m_C": 30.9,
+        "Relative_Humidity_%": 37.0,
+        "Wind_Speed_10m": 5.5,
+        "Surface_Pressure_hPa": 1011.2,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 61.082763671875,
+      "lat": 23.0215374,
+      "lng": 72.5800568,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.290191"
+    },
+    {
+      "name": "Jorapokhar",
+      "aqi": 110,
+      "category": "Moderate",
+      "dominant_pollutant": "NO2",
+      "sub_indices": {
+        "PM2_5": 8,
+        "PM10": 56,
+        "NO2": 110,
+        "O3": 33,
+        "CO": 0
+      },
+      "data": {
+        "PM2_5": 4.76,
+        "PM10": 55.61,
+        "NO2": 89.037,
+        "CO": 0.0,
+        "O3": 33.34
+      },
+      "pm25": 4.76,
+      "lat": 23.7167069,
+      "lng": 86.4110166,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.810744"
+    },
+    {
+      "name": "Bhopal",
+      "aqi": 106,
+      "category": "Moderate",
+      "dominant_pollutant": "O3",
+      "sub_indices": {
+        "PM2_5": 48,
+        "PM10": 73,
+        "NO2": 42,
+        "O3": 106,
+        "CO": 42
+      },
+      "data": {
+        "PM2_5": 29.0,
+        "PM10": 72.0,
+        "NO2": 33.276,
+        "CO": 0.836,
+        "O3": 103.5,
+        "Temperature_2m_C": 24.9,
+        "Relative_Humidity_%": 30.0,
+        "Wind_Speed_10m": 7.6,
+        "Surface_Pressure_hPa": 1008.6,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 29.0,
+      "lat": 23.2584857,
+      "lng": 77.401989,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.434029"
+    },
+    {
+      "name": "Kochi",
+      "aqi": 103,
+      "category": "Moderate",
+      "dominant_pollutant": "PM2_5",
+      "sub_indices": {
+        "PM2_5": 103,
+        "PM10": 76,
+        "NO2": 11,
+        "O3": 16,
+        "CO": 46
+      },
+      "data": {
+        "PM2_5": 60.48,
+        "PM10": 75.71,
+        "NO2": 8.46,
+        "CO": 0.916,
+        "O3": 15.74,
+        "Temperature_2m_C": 27.6,
+        "Relative_Humidity_%": 80.0,
+        "Wind_Speed_10m": 8.6,
+        "Surface_Pressure_hPa": 1006.0,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 60.48,
+      "lat": 9.9679032,
+      "lng": 76.2444378,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.863796"
+    },
+    {
+      "name": "Patna",
+      "aqi": 99,
+      "category": "Satisfactory",
+      "dominant_pollutant": "NO2",
+      "sub_indices": {
+        "PM2_5": 79,
+        "PM10": 93,
+        "NO2": 99,
+        "O3": 33,
+        "CO": 30
+      },
+      "data": {
+        "PM2_5": 47.2,
+        "PM10": 92.7,
+        "NO2": 79.58,
+        "CO": 0.598,
+        "O3": 33.06,
+        "Temperature_2m_C": 26.8,
+        "Relative_Humidity_%": 35.0,
+        "Wind_Speed_10m": 7.2,
+        "Surface_Pressure_hPa": 1005.8,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 47.2,
+      "lat": 25.6093239,
+      "lng": 85.1235252,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.972909"
+    },
+    {
+      "name": "Jaipur",
+      "aqi": 96,
+      "category": "Satisfactory",
+      "dominant_pollutant": "PM2_5",
+      "sub_indices": {
+        "PM2_5": 96,
+        "PM10": 93,
+        "NO2": 75,
+        "O3": 67,
+        "CO": 69
+      },
+      "data": {
+        "PM2_5": 57.3,
+        "PM10": 92.8,
+        "NO2": 59.239,
+        "CO": 1.374,
+        "O3": 66.38,
+        "Temperature_2m_C": 22.1,
+        "Relative_Humidity_%": 47.0,
+        "Wind_Speed_10m": 5.5,
+        "Surface_Pressure_hPa": 1009.7,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 57.3,
+      "lat": 26.9154576,
+      "lng": 75.8189817,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.759777"
+    },
+    {
+      "name": "Visakhapatnam",
+      "aqi": 89,
+      "category": "Satisfactory",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 50,
+        "PM10": 89,
+        "NO2": 83,
+        "O3": 46,
+        "CO": 9
+      },
+      "data": {
+        "PM2_5": 30.0,
+        "PM10": 89.0,
+        "NO2": 65.8,
+        "CO": 0.183,
+        "O3": 46.1,
+        "Temperature_2m_C": 27.1,
+        "Relative_Humidity_%": 69.0,
+        "Wind_Speed_10m": 9.7,
+        "Surface_Pressure_hPa": 1007.2,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 30.0,
+      "lat": 17.6935526,
+      "lng": 83.2921297,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:02.154464"
+    },
+    {
+      "name": "Hyderabad",
+      "aqi": 85,
+      "category": "Satisfactory",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 71,
+        "PM10": 85,
+        "NO2": 28,
+        "O3": 10,
+        "CO": 36
+      },
+      "data": {
+        "PM2_5": 42.12,
+        "PM10": 84.96,
+        "NO2": 22.786,
+        "CO": 0.721,
+        "O3": 9.7,
+        "Temperature_2m_C": 25.3,
+        "Relative_Humidity_%": 58.0,
+        "Wind_Speed_10m": 3.7,
+        "Surface_Pressure_hPa": 1009.1,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 42.12,
+      "lat": 17.360589,
+      "lng": 78.4740613,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.707829"
+    },
+    {
+      "name": "Kolkata",
+      "aqi": 80,
+      "category": "Satisfactory",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 55,
+        "PM10": 80,
+        "NO2": 29,
+        "O3": 26,
+        "CO": 56
+      },
+      "data": {
+        "PM2_5": 32.52,
+        "PM10": 79.1,
+        "NO2": 23.274,
+        "CO": 1.111,
+        "O3": 26.09,
+        "Temperature_2m_C": 24.2,
+        "Relative_Humidity_%": 69.0,
+        "Wind_Speed_10m": 1.8,
+        "Surface_Pressure_hPa": 1009.6,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 32.52,
+      "lat": 22.5726459,
+      "lng": 88.3638953,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.913536"
+    },
+    {
+      "name": "Talcher",
+      "aqi": 79,
+      "category": "Satisfactory",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 43,
+        "PM10": 79,
+        "NO2": 70,
+        "O3": 61,
+        "CO": 49
+      },
+      "data": {
+        "PM2_5": 25.98,
+        "PM10": 78.07,
+        "NO2": 55.159,
+        "CO": 0.985,
+        "O3": 59.84,
+        "Temperature_2m_C": 31.8,
+        "Relative_Humidity_%": 27.0,
+        "Wind_Speed_10m": 3.2,
+        "Surface_Pressure_hPa": 1005.1,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 25.98,
+      "lat": 20.9322302,
+      "lng": 85.2005822,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:02.061485"
+    },
+    {
+      "name": "Shillong",
+      "aqi": 61,
+      "category": "Satisfactory",
+      "dominant_pollutant": "O3",
+      "sub_indices": {
+        "PM2_5": 3,
+        "PM10": 13,
+        "NO2": 0,
+        "O3": 61,
+        "CO": 15
+      },
+      "data": {
+        "PM2_5": 2.0,
+        "PM10": 13.0,
+        "NO2": 0.207,
+        "CO": 0.298,
+        "O3": 59.92
+      },
+      "pm25": 2.0,
+      "lat": 25.5759931,
+      "lng": 91.8827872,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:02.019133"
+    },
+    {
+      "name": "Thiruvananthapuram",
+      "aqi": 61,
+      "category": "Satisfactory",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 40,
+        "PM10": 61,
+        "NO2": 1,
+        "O3": 17,
+        "CO": 35
+      },
+      "data": {
+        "PM2_5": 24.0,
+        "PM10": 60.0,
+        "NO2": 0.752,
+        "CO": 0.698,
+        "O3": 16.7,
+        "Temperature_2m_C": 27.1,
+        "Relative_Humidity_%": 84.0,
+        "Wind_Speed_10m": 1.8,
+        "Surface_Pressure_hPa": 1009.2,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 24.0,
+      "lat": 8.4882267,
+      "lng": 76.947551,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:02.112872"
+    },
+    {
+      "name": "Aizawl",
+      "aqi": 59,
+      "category": "Satisfactory",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 56,
+        "PM10": 59,
+        "NO2": 0,
+        "O3": 6,
+        "CO": 3
+      },
+      "data": {
+        "PM2_5": 32.77,
+        "PM10": 58.06,
+        "NO2": 0.32,
+        "CO": 0.069,
+        "O3": 6.43,
+        "Temperature_2m_C": 26.0,
+        "Relative_Humidity_%": 29.0,
+        "Wind_Speed_10m": 3.2,
+        "Surface_Pressure_hPa": 1007.4,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 32.77,
+      "lat": 23.7277631,
+      "lng": 92.7179947,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.326515"
+    },
+    {
+      "name": "Coimbatore",
+      "aqi": 48,
+      "category": "Good",
+      "dominant_pollutant": "PM10",
+      "sub_indices": {
+        "PM2_5": 34,
+        "PM10": 48,
+        "NO2": 0,
+        "O3": 44,
+        "CO": 19
+      },
+      "data": {
+        "PM2_5": 20.48,
+        "PM10": 48.47,
+        "NO2": 0.0,
+        "CO": 0.389,
+        "O3": 43.81,
+        "Temperature_2m_C": 31.5,
+        "Relative_Humidity_%": 40.0,
+        "Wind_Speed_10m": 6.1,
+        "Surface_Pressure_hPa": 1005.5,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 20.48,
+      "lat": 11.0018115,
+      "lng": 76.9628425,
+      "state": "India",
+      "updated_at": "2026-02-24T07:29:01.533180"
+    }
+  ]
+}

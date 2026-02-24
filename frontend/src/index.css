@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 min-h-screen;
+}
+
+/* Custom Scrollbar for Sidebar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Leaflet Popup Overrides */
+.custom-popup .leaflet-popup-content-wrapper {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.custom-popup .leaflet-popup-content {
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.custom-popup .leaflet-popup-tip {
+  background: #ffffff;
+  /* Match white background */
+}
+
+.custom-popup a.leaflet-popup-close-button {
+  display: none;
+  /* We have our own close button */
+}

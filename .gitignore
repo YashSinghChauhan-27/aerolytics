@@ -1,0 +1,44 @@
+# ===========================
+# Python virtual environments
+# ===========================
+venv/
+.venv/
+
+# ===========================
+# PyTorch Lightning training logs (HUGE - not needed at runtime)
+# ===========================
+lightning_logs/
+
+# ===========================
+# Python cache
+# ===========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ===========================
+# Node / Frontend
+# ===========================
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+
+# ===========================
+# OS noise
+# ===========================
+.DS_Store
+Thumbs.db
+
+# ===========================
+# IDE
+# ===========================
+.vscode/
+.idea/
+
+# ===========================
+# Env files (keep .env.production and .env.development in repo,
+# but never commit secrets to a real .env)
+# ===========================
+.env
