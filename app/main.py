@@ -12,17 +12,11 @@ app = FastAPI(title="Aerolytics Backend")
 
 from fastapi.middleware.cors import CORSMiddleware
 
-# CORS origins: driven by env var in production (Render), wildcard in dev
-_raw_origins = os.environ.get("ALLOWED_ORIGINS", "*")
-if _raw_origins == "*":
-    ALLOWED_ORIGINS = ["*"]
-else:
-    ALLOWED_ORIGINS = [o.strip() for o in _raw_origins.split(",") if o.strip()]
-
+# Open CORS — allows any origin (safe since this is a read-only public API)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,
-    allow_credentials=False,   # must be False when allow_origins=["*"]
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
