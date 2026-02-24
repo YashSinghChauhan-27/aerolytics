@@ -12,4 +12,4 @@ services:
       - key: OPENAQ_API_KEY
         sync: false   # Set this manually in Render dashboard
       - key: ALLOWED_ORIGINS
-        value: "https://aerolytics.vercel.app"  # Update after Vercel deploy
+        value: "https://aerolytics.vercel.app"
