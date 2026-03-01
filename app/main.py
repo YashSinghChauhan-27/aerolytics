@@ -78,6 +78,37 @@ def test_features(city: str = "Delhi"):
         "end_time": str(df.iloc[-1]["Datetime"])
     }
 
+@app.get("/test/force_forecast")
+def force_forecast(city: str = "Delhi"):
+    try:
+        from app.services.features import get_tft_input
+        from app.services.tft_inference import predict_horizon
+        from app.services.pollution import update_pollution_buffer
+        from app.services.weather import update_weather_buffer
+        
+        # Manually run the steps
+        update_pollution_buffer(city)
+        update_weather_buffer(city)
+        
+        df = get_tft_input(city)
+        if len(df) != 24:
+            return {"status": "error", "message": f"TFT input is not 24 rows, got {len(df)}"}
+            
+        forecast_df = predict_horizon(df, city, steps=48)
+        return {
+            "status": "success", 
+            "city": city,
+            "forecast_rows": len(forecast_df),
+            "first_pred_time": str(forecast_df.iloc[0]["Datetime"]) if len(forecast_df) > 0 else "N/A"
+        }
+    except Exception as e:
+        import traceback
+        return {
+            "status": "failed",
+            "error": str(e),
+            "traceback": traceback.format_exc()
+        }
+
 
 # --------------------------------------------------
 # 🔮 FINAL ONE-CLICK PREDICTION PIPELINE
