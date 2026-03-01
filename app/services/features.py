@@ -73,7 +73,7 @@ def load_and_merge(city: str) -> pd.DataFrame:
         wea,
         on="Datetime",
         direction="backward",
-        tolerance=pd.Timedelta("1H")
+        tolerance=pd.Timedelta("4D")
     )
 
     # 🔥 STEP 3: Fill weather safely
