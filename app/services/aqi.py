@@ -69,7 +69,7 @@ def calculate_aqi(pm25=None, pm10=None, no2=None, o3=None, co=None):
     if pm10 is not None: sub_indices["PM10"] = calculate_sub_index(pm10, bp_pm10)
     if no2 is not None: sub_indices["NO2"] = calculate_sub_index(no2, bp_no2)
     if o3 is not None: sub_indices["O3"] = calculate_sub_index(o3, bp_o3)
-    if co is not None: sub_indices["CO"] = calculate_sub_index(co, bp_co)
+    if co is not None: sub_indices["CO"] = calculate_sub_index(co / 1000.0, bp_co)
 
     if not sub_indices:
         return {"aqi": 0, "category": "No Data", "dominant_pollutant": "None", "sub_indices": {}}
