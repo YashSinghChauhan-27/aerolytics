@@ -19,14 +19,26 @@ def load_and_merge(city: str) -> pd.DataFrame:
     wea = pd.read_csv(wea_path, parse_dates=["Datetime"])
 
     # -------------------------
-    # Convert to IST
+    # Convert to IST safely
     # -------------------------
+    if pol["Datetime"].dt.tz is None:
+        pol["Datetime"] = pol["Datetime"].dt.tz_localize("UTC")
+        
     pol["Datetime"] = (
         pol["Datetime"]
         .dt.tz_convert("Asia/Kolkata")
         .dt.tz_localize(None)
     )
+    
     wea["Datetime"] = pd.to_datetime(wea["Datetime"])
+    if wea["Datetime"].dt.tz is None:
+        wea["Datetime"] = wea["Datetime"].dt.tz_localize("UTC")
+        
+    wea["Datetime"] = (
+        wea["Datetime"]
+        .dt.tz_convert("Asia/Kolkata")
+        .dt.tz_localize(None)
+    )
 
     pol = pol.sort_values("Datetime")
     wea = wea.sort_values("Datetime")

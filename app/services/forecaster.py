@@ -72,7 +72,7 @@ def update_forecast_cache(city: str):
 
     except Exception as e:
         print(f"❌ [FORECASTER] Failed {city}: {e}")
-        # traceback.print_exc()
+        traceback.print_exc()
         return False
 
 def update_all_forecasts():

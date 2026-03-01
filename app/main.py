@@ -67,12 +67,15 @@ def test_weather(city: str = "Delhi"):
 
 @app.get("/test/features")
 def test_features(city: str = "Delhi"):
+    from app.services.features import get_tft_input
     df = get_tft_input(city)
     return {
         "city": city,
         "rows": len(df),
         "columns": list(df.columns),
-        "pm25_used": float(df.iloc[-1]["PM2_5"])
+        "pm25_used": float(df.iloc[-1]["PM2_5"]),
+        "start_time": str(df.iloc[0]["Datetime"]),
+        "end_time": str(df.iloc[-1]["Datetime"])
     }
 
 
