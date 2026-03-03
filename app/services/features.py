@@ -12,8 +12,19 @@ def load_and_merge(city: str) -> pd.DataFrame:
     pol_path = BUFFER_DIR / f"{city_key}_pollution.csv"
     wea_path = BUFFER_DIR / f"{city_key}_weather.csv"
 
-    if not pol_path.exists() or not wea_path.exists():
-        raise FileNotFoundError("Pollution or weather buffer missing")
+    if not pol_path.exists():
+        raise FileNotFoundError("Pollution buffer missing. Please wait for startup backfill to complete.")
+        
+    if not wea_path.exists():
+        try:
+            from app.services.weather import update_weather_buffer
+            print(f"🌦️ Weather buffer missing for {city_key}. Fetching on demand...")
+            update_weather_buffer(city_key)
+        except Exception as e:
+            raise FileNotFoundError(f"Weather buffer missing and failed to fetch: {e}")
+            
+    if not wea_path.exists():
+        raise FileNotFoundError("Weather buffer missing after fetch attempt.")
 
     pol = pd.read_csv(pol_path, parse_dates=["Datetime"])
     wea = pd.read_csv(wea_path, parse_dates=["Datetime"])
