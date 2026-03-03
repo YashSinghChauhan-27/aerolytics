@@ -28,6 +28,14 @@ app.add_middleware(
 # --------------------------------------------------
 @app.on_event("startup")
 def startup_event():
+    # 🧹 Auto-backfill 48 hours of data on boot to handle Render sleep gaps
+    print("🔄 Waking up: Checking and backfilling stale data buffers...")
+    try:
+        from backfill_pollution import backfill
+        backfill()
+    except Exception as e:
+        print(f"⚠️ Startup backfill failed: {e}")
+        
     start_pollution_ingestion()
     print("🟢 Pollution ingestion scheduler started")
 
