@@ -28,13 +28,18 @@ app.add_middleware(
 # --------------------------------------------------
 @app.on_event("startup")
 def startup_event():
-    # 🧹 Auto-backfill 48 hours of data on boot to handle Render sleep gaps
-    print("🔄 Waking up: Checking and backfilling stale data buffers...")
-    try:
-        from backfill_pollution import backfill
-        backfill()
-    except Exception as e:
-        print(f"⚠️ Startup backfill failed: {e}")
+    # 🧹 Auto-backfill 48 hours of data on boot to handle Render sleep gaps (Non-blocking)
+    print("🔄 Waking up: Scheduling backfill...")
+    def run_backfill():
+        try:
+            from backfill_pollution import backfill
+            backfill()
+            print("✅ Startup backfill complete.")
+        except Exception as e:
+            print(f"⚠️ Startup backfill failed: {e}")
+            
+    import threading
+    threading.Thread(target=run_backfill, daemon=True).start()
         
     start_pollution_ingestion()
     print("🟢 Pollution ingestion scheduler started")
@@ -43,7 +48,7 @@ def startup_event():
 # --------------------------------------------------
 # Health check
 # --------------------------------------------------
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def home():
     return {
         "message": "Aerolytics backend is running successfully"
