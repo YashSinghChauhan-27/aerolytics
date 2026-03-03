@@ -42,3 +42,8 @@ Thumbs.db
 # but never commit secrets to a real .env)
 # ===========================
 .env
+
+# ===========================
+# Local JSON Forecasts
+# ===========================
+app/data/forecasts/*.json
