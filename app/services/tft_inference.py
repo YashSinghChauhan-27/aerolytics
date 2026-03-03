@@ -249,8 +249,24 @@ def predict_horizon(df: pd.DataFrame, city: str, steps: int = 24):
         current_df = pd.concat([current_df, next_row.to_frame().T], ignore_index=True)
         current_df["time_idx"] = current_df["time_idx"].astype(int)
 
+        # 🧹 AGGRESSIVE GARBAGE COLLECTION
+        # PyTorch TimeSeriesDataSets and DataLoaders leak memory inside loops
+        # if not explicitly destroyed, which swap-crashes the 512MB Render free tier
+        del predict_dataset
+        del loader
+        del preds
+        import gc
+        gc.collect()
+
     # ----------------------------
     # 4️⃣ Output
     # ----------------------------
     forecast = pd.DataFrame(forecast_rows)
+    
+    # 🧹 Final Cleanup
+    del current_df
+    del base_dataset
+    import gc
+    gc.collect()
+    
     return forecast
