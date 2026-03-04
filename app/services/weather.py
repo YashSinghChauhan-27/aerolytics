@@ -13,7 +13,15 @@ def fetch_weather_df(city: str):
     end = datetime.utcnow()
     start = end - timedelta(hours=72)  # wider window = safer merge
 
-    df = Hourly(location, start, end).fetch()
+    import concurrent.futures
+    executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+    future = executor.submit(lambda: Hourly(location, start, end).fetch())
+    
+    try:
+        df = future.result(timeout=20.0)
+    except concurrent.futures.TimeoutError:
+        raise RuntimeError("Meteostat fetch timed out after 20 seconds")
+    
     if df.empty:
         raise RuntimeError("No weather data returned")
 

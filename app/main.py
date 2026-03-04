@@ -1,8 +1,4 @@
 import os
-import socket
-
-# 🛡️ Prevent external libraries (like Meteostat/Pandas) from infinitely deadlocking threads
-socket.setdefaulttimeout(15.0)
 
 from fastapi import FastAPI, HTTPException
 
