@@ -33,7 +33,7 @@ def startup_event():
     print("🔄 Waking up: Scheduling backfill...")
     def run_backfill():
         try:
-            from backfill_pollution import backfill
+            from app.services.backfill import backfill
             backfill()
             print("✅ Startup backfill complete.")
         except Exception as e:

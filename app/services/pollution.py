@@ -86,7 +86,7 @@ def update_pollution_buffer(city: str, max_rows: int = 100):
     if (now_utc - last_dt) > pd.Timedelta(hours=12):
         print(f"⚠️ [{city}] OpenAQ returned completely stale data ({last_dt}). Triggering Open-Meteo backfill...")
         try:
-            from backfill_pollution import backfill_city
+            from app.services.backfill import backfill_city
             from app.config import CITY_CONFIG
             df = backfill_city(city.lower(), CITY_CONFIG[city.lower()])
             return df
