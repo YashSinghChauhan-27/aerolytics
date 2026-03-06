@@ -76,6 +76,23 @@ def update_pollution_buffer(city: str, max_rows: int = 100):
     buffer_path = BUFFER_DIR / f"{city.lower()}_pollution.csv"
 
     new_data = fetch_latest_pollutants(city)
+    
+    # 🛡️ FAILOVER CHECK: If OpenAQ sensors freeze (e.g. data is >12h old), trigger Open-Meteo backfill
+    now_utc = pd.Timestamp.now(tz="UTC")
+    last_dt = pd.to_datetime(new_data["Datetime"])
+    if last_dt.tz is None:
+        last_dt = last_dt.tz_localize("UTC")
+        
+    if (now_utc - last_dt) > pd.Timedelta(hours=12):
+        print(f"⚠️ [{city}] OpenAQ returned completely stale data ({last_dt}). Triggering Open-Meteo backfill...")
+        try:
+            from backfill_pollution import backfill_city
+            from app.config import CITY_CONFIG
+            df = backfill_city(city.lower(), CITY_CONFIG[city.lower()])
+            return df
+        except Exception as e:
+            print(f"❌ [{city}] Open-Meteo fallback failed: {e}")
+
     new_row = pd.DataFrame([new_data])
 
     if buffer_path.exists():
