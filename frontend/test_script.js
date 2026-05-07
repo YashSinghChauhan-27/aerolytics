@@ -1,167 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-    <title>Aerolytics</title>
-    <style>
-/* Chatbot Base Variables */
-:root {
-  --cb-sky: #0ea5e9; --cb-ink: #0f172a; --cb-surface: #1a2740; --cb-s2: #20304d; --cb-s3: #273b57;
-  --cb-border: #2e4363; --cb-text: #e8f0fb; --cb-muted: #7a93b5;
-  --cb-good: #22c55e; --cb-sat: #84cc16; --cb-mod: #f59e0b; --cb-poor: #f97316; --cb-vpoor: #ef4444; --cb-severe: #a855f7;
-}
-
-/* Chatbot Restrictive Reset */
-#cb-wrapper { font-family: 'Inter', sans-serif; position: relative; z-index: 999999;}
-#cb-wrapper * { box-sizing: border-box; }
-
-/* Trigger */
-#cb-trig {
-  position: fixed; bottom: 24px; right: 24px; z-index: 9999; width: 58px; height: 58px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--cb-sky), #6366f1); border: none; cursor: pointer;
-  box-shadow: 0 6px 28px rgba(14,165,233,.55); display: flex; align-items: center; justify-content: center;
-  font-size: 24px; transition: transform .2s, box-shadow .2s; color: #fff;
-}
-#cb-trig:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(14,165,233,.7); }
-
-/* Panel */
-#cb-panel {
-  position: fixed; bottom: 94px; right: 24px; width: 420px; max-height: 650px; height: 80vh; border-radius: 22px;
-  display: flex; flex-direction: column; z-index: 9998; overflow: hidden;
-  background: rgba(15,23,42,.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--cb-border); box-shadow: 0 24px 80px rgba(0,0,0,.7);
-  transform: translateY(20px) scale(.9); opacity: 0; pointer-events: none;
-  transition: transform .3s cubic-bezier(.34,1.4,.64,1), opacity .25s; text-align: left;
-}
-#cb-panel.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: all; }
-
-/* Header */
-.cb-hdr {
-  padding: 15px 18px; border-bottom: 1px solid var(--cb-border);
-  background: linear-gradient(135deg, rgba(14,165,233,.15), rgba(99,102,241,.1));
-  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
-}
-.cb-hdr-logo {
-  width: 34px; height: 34px; border-radius: 9px;
-  background: linear-gradient(135deg, var(--cb-sky), #6366f1); display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff;
-}
-.cb-hdr-info .cb-ht { color: var(--cb-text); font-weight: 700; font-size: 14px; line-height: 1.2; margin:0;}
-.cb-hdr-info .cb-hs { color: var(--cb-muted); font-size: 11px; margin-top: 2px; }
-.cb-hdr-badge {
-  margin-left: auto; display: flex; align-items: center; gap: 5px;
-  color: var(--cb-good); font-size: 11px; font-weight: 600;
-}
-.cb-hdr-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cb-good); animation: cb-pulse 2s infinite; }
-@keyframes cb-pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
-
-/* API key screen */
-#cb-setup { padding: 28px 22px; display: flex; flex-direction: column; gap: 14px; flex: 1; overflow-y: auto; }
-.cb-setup-icon { font-size: 36px; text-align: center; }
-.cb-setup-title { font-size: 16px; font-weight: 700; color: var(--cb-text); text-align: center; }
-.cb-setup-sub { font-size: 13px; color: var(--cb-muted); text-align: center; line-height: 1.6; }
-.cb-setup-steps { background: var(--cb-s2); border-radius: 12px; padding: 14px; border: 1px solid var(--cb-border); }
-.cb-setup-step { font-size: 12px; color: var(--cb-muted); margin: 4px 0; display: flex; gap: 8px; line-height: 1.4; }
-.cb-setup-step span { color: var(--cb-sky); font-weight: 700; }
-#cb-apikey-input {
-  width: 100%; background: var(--cb-s2); border: 1px solid var(--cb-border); border-radius: 10px;
-  padding: 10px 14px; color: var(--cb-text); font-family: 'Inter', sans-serif; font-size: 13px; outline: none;
-  transition: border-color .2s; margin-top: auto;
-}
-#cb-apikey-input:focus { border-color: var(--cb-sky); }
-#cb-apikey-input::placeholder { color: var(--cb-muted); }
-#cb-apikey-btn {
-  width: 100%; padding: 11px; border-radius: 10px;
-  background: linear-gradient(135deg, var(--cb-sky), #6366f1); border: none;
-  color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity .2s;
-}
-#cb-apikey-btn:hover { opacity: .88; }
-.cb-setup-skip { text-align: center; font-size: 11.5px; color: var(--cb-muted); cursor: pointer; padding-top: 10px;}
-.cb-setup-skip:hover { color: var(--cb-sky); }
-
-/* Messages */
-#cb-msgs { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; }
-#cb-msgs::-webkit-scrollbar { width: 3px; }
-#cb-msgs::-webkit-scrollbar-thumb { background: var(--cb-border); border-radius: 2px; }
-
-.cb-msg { display: flex; gap: 8px; animation: cb-fadeUp .2s ease; }
-@keyframes cb-fadeUp { from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
-.cb-msg.bot .cb-bub {
-  background: var(--cb-surface); border: 1px solid var(--cb-border); color: var(--cb-text);
-  border-radius: 4px 16px 16px 16px; padding: 11px 13px; font-size: 13.5px; line-height: 1.6; max-width: 360px;
-}
-.cb-msg.usr { justify-content: flex-end; }
-.cb-msg.usr .cb-bub {
-  background: linear-gradient(135deg, var(--cb-sky), #6366f1); color: #fff;
-  border-radius: 16px 4px 16px 16px; padding: 10px 14px; font-size: 13.5px; line-height: 1.6; max-width: 290px;
-}
-.cb-ava {
-  width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--cb-sky), #6366f1);
-  display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 2px; color: #fff;
-}
-
-/* Cards */
-.cb-aqi-badge {
-  display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
-  border-radius: 20px; font-weight: 700; font-size: 13px; margin: 6px 0 4px; border:none;
-}
-.cb-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 8px 0; }
-.cb-pc { background: var(--cb-s2); border-radius: 10px; padding: 8px 10px; border: 1px solid var(--cb-border); }
-.cb-pc .cb-lbl { font-size: 10px; color: var(--cb-muted); font-weight: 600; text-transform: uppercase; line-height: 1.2; margin:0;}
-.cb-pc .cb-val { font-size: 15px; font-weight: 700; color: var(--cb-text); margin-top: 1px; line-height: 1.2;}
-.cb-pc .cb-unt { font-size: 10px; color: var(--cb-muted); font-weight: normal; }
-.cb-info-card {
-  background: linear-gradient(135deg, rgba(14,165,233,.08), rgba(99,102,241,.07));
-  border: 1px solid rgba(14,165,233,.2); border-radius: 10px; padding: 10px 12px; margin: 8px 0;
-}
-.cb-ic-title { font-size: 11px; font-weight: 700; color: var(--cb-sky); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
-.cb-ic-row { font-size: 12.5px; color: #bae6fd; margin: 3px 0; display: flex; gap: 6px; line-height: 1.4;}
-.cb-ac-sec { margin-top: 8px; }
-.cb-ac-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; color: var(--cb-muted); margin-bottom: 5px; }
-.cb-ac-list { display: flex; flex-direction: column; gap: 4px; }
-.cb-ac { padding: 6px 10px; border-radius: 8px; font-size: 12.5px; display: flex; gap: 6px; line-height: 1.4;}
-.cb-ac.do { background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.2); color: #86efac; }
-.cb-ac.no { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.2); color: #fca5a5; }
-.cb-health-card {
-  background: rgba(251,191,36,.07); border: 1px solid rgba(251,191,36,.25);
-  border-radius: 10px; padding: 10px 12px; margin: 8px 0;
-}
-.cb-hc-title { font-size: 11px; font-weight: 700; color: #fbbf24; text-transform: uppercase; margin-bottom: 6px; }
-.cb-hc-row { font-size: 12.5px; color: #fef3c7; margin: 3px 0; display: flex; gap: 6px; line-height: 1.4;}
-.cb-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
-.cb-chip {
-  padding: 5px 11px; border-radius: 18px; background: var(--cb-s2); border: 1px solid var(--cb-border);
-  color: var(--cb-sky); font-size: 11.5px; cursor: pointer; font-family: 'Inter', sans-serif; transition: all .15s;
-}
-.cb-chip:hover { background: rgba(14,165,233,.15); border-color: var(--cb-sky); }
-.cb-typ { display: flex; gap: 4px; padding: 12px 14px; align-items: center; }
-.cb-typ span { width: 7px; height: 7px; border-radius: 50%; background: var(--cb-muted); animation: cb-bl 1.2s infinite; }
-.cb-typ span:nth-child(2) { animation-delay: .2s; } .cb-typ span:nth-child(3) { animation-delay: .4s; }
-@keyframes cb-bl { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
-.cb-link {color: var(--cb-sky); text-decoration: underline; cursor: pointer; font-weight: 500;}
-
-/* Footer */
-.cb-ftr { padding: 10px 14px; border-top: 1px solid var(--cb-border); display: flex; gap: 8px; align-items: flex-end; background: rgba(15,23,42,.95); flex-shrink: 0;}
-#cb-inp {
-  flex: 1; background: var(--cb-s2); border: 1px solid var(--cb-border); border-radius: 11px;
-  padding: 9px 13px; color: var(--cb-text); font-family: 'Inter', sans-serif; font-size: 13px;
-  resize: none; outline: none; transition: border-color .2s; max-height: 90px; line-height: 1.5; margin:0;
-}
-#cb-inp:focus { border-color: var(--cb-sky); }
-#cb-inp::placeholder { color: var(--cb-muted); }
-#cb-snd {
-  width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--cb-sky), #6366f1);
-  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding:0;
-}
-#cb-snd svg { width: 15px; height: 15px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-@media(max-width: 440px) { #cb-panel { right: 0; bottom: 78px; width: 100vw; border-radius: 18px 18px 0 0; max-height: 85vh; height: 85vh;} }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx">
 
     <!-- Aerolytics Chatbot Widget -->
     <div id="cb-wrapper">
@@ -171,9 +8,9 @@
         <div class="cb-hdr">
           <div class="cb-hdr-icon">
           <svg style="width:24px;height:24px;color:var(--cb-link)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1M4 7l2 1M9 22h6a2 2 0 002-2V7.414A2 2 0 0016.414 6L12 1.586A2 2 0 007.586 6L4 9.414A2 2 0 004 12v8a2 2 0 002 2z"></path></svg>
-          </div>
+        </div>
         <div style="flex:1">
-          <div id="cb-hdr-title" style="font-weight:600;font-size:15px;color:var(--cb-text)">Aerolytics · Local AQI</div>
+          <div style="font-weight:600;font-size:15px;color:var(--cb-text)">Aerolytics · Local AQI</div>
           <div style="font-size:11px;color:var(--cb-muted)">Chennai · Bengaluru · Delhi</div>
         </div>
         <div style="display:flex;gap:8px;align-items:center">
@@ -216,8 +53,8 @@
       </div>
     </div>
 
-    <script>
-    (function(){
+219:     
+220:     (function(){
       // ── REAL CHENNAI MONITORING STATIONS (OpenAQ v3 verified) ─────────────────────
       const STATIONS = {
         arumbakkam: {
@@ -430,23 +267,23 @@
         en: {
           "aqi_def": "<b>What is AQI?</b><br/><br/>AQI (Air Quality Index) is a thermometer for the air, running from 0 to 500. Under 50 is fresh and safe, but over 300 is hazardous to breathe. It helps you quickly know if you need to wear a mask today.",
           "mask": "<b>Which mask should you wear?</b><br/><br/>Cloth or surgical masks <b>do not</b> stop pollution! Because fine dust (PM2.5) is microscopic, you must wear an <b>N95, N99, or FFP2</b> mask. Ensure it seals tightly around your nose and cheeks.",
-          "winter": "<b>Why does pollution spike in winter?</b><br/><br/>In winter, cold air sinks to the ground. This creates a 'dome' over the city that traps vehicle exhaust, farm fires, and industrial smoke instead of letting it blow away. We call this 'winter inversion'.",
-          "health": "<b>Can bad air make me sick?</b><br/><br/>Yes. Extremely poor air causes immediate coughing, sneezing, and watery eyes. Long-term exposure to PM2.5 increases the risk of asthma, lung infections, and serious heart conditions. Protecting yourself is crucial.",
-          "protect": "<b>Basic Tips to Protect Yourself:</b><br/>1. Wear an N95 mask outdoors.<br/>2. Stay indoors with windows closed during peak hours (10 AM - 4 PM).<br/>3. Run a HEPA Air Purifier.<br/>4. Do not run or exercise outdoors when AQI is over 200.",
-          "safe_today": "<b>Is it safe today?</b><br/><br/>It completely depends on where you are! Please ask me about a specific area, for example: <i>'What is the air like in Punjabi Bagh?'</i> or <i>'Is it safe in IIT Delhi?'</i>"
-        },
-        hi: {
-          "aqi_def": "<b>AQI क्या है?</b><br/><br/>AQI (वायु गुणवत्ता सूचकांक) हवा के लिए एक थर्मामीटर की तरह है, जो 0 से 500 तक होता है। 50 से कम हवा ताज़ा और सुरक्षित होती है, लेकिन 300 से अधिक सांस लेने के लिए खतरनाक है।",
-          "mask": "<b>कौन सा मास्क पहनना चाहिए?</b><br/><br/>कपड़े या सर्जिकल मास्क प्रदूषण को <b>नहीं</b> रोकते! महीन धूल (PM2.5) से बचने के लिए <b>N95, N99, या FFP2</b> मास्क ही पहनें।",
-          "winter": "<b>सर्दियों में प्रदूषण क्यों बढ़ता है?</b><br/><br/>सर्दियों में ठंडी हवा नीचे बैठ जाती है, जो एक 'डोम' बनाती है, जिससे वाहनों का धुआं और औद्योगिक गैसें ऊपर नहीं उड़ पातीं। इसे 'विंटर इन्वर्जन' कहते हैं।",
-          "health": "<b>क्या खराब हवा मुझे बीमार कर सकती है?</b><br/><br/>हाँ। PM2.5 के लगातार प्रभाव से अस्थमा, फेफड़ों के संक्रमण और हृदय रोगों का खतरा काफी बढ़ जाता है। बचाव आवश्यक है।",
-          "protect": "<b>खुद को बचाने के टिप्स:</b><br/>1. बाहर जाते समय N95 मास्क पहनें।<br/>2. पीक आवर्स (सुबह 10 - शाम 4) में घर के अंदर रहें।<br/>3. HEPA एयर प्यूरीफायर चलाएं।<br/>4. AQI 200 के पार होने पर बाहर व्यायाम न करें।",
-          "safe_today": "<b>क्या आज बाहर जाना सुरक्षित है?</b><br/><br/>यह आपके क्षेत्र पर निर्भर करता है! कृपया किसी विशेष क्षेत्र के बारे में पूछें, जैसे: <i>'कनॉट प्लेस में हवा कैसी है?'</i>"
-        },
-        ta: {
-          "aqi_def": "<b>AQI என்றால் என்ன?</b><br/><br/>AQI (காற்றுத் தரக் குறியீடு) என்பது காற்றின் தரம் 0 முதல் 500 வரை அளவிடப்படும் ஒரு அளவுகோலாகும். 50-க்குக் குறைவாக இருந்தால் காற்று சுத்தமானது, ஆனால் 300-க்கு மேல் இருந்தால் சுவாசிப்பது ஆபத்தானது.",
-          "mask": "<b>எந்த முகக்கவசம் அணிய வேண்டும்?</b><br/><br/>துணி அல்லது அறுவை சிகிச்சை முகக்கவசங்கள் மாசுபாட்டைத் தடுக்காது! நுண்ணிய துகள்களிலிருந்து (PM2.5) தற்காத்துக் கொள்ள <b>N95, N99 அல்லது FFP2</b> முகக்கவசங்களை மட்டுமே அணியுங்கள்.",
-          "winter": "<b>குளிர்காலத்தில் மாசுபாடு ஏன் அதிகரிக்கிறது?</b><br/><br/>குளிர்காலத்தில் குளிர்ந்த காற்று தரை மட்டத்தில் தங்கிவிடும், இது வாகனப் புகை மற்றும் தூசியைச் சிதற விடாமல் தடுத்து ஒரு 'குடை' போன்று மூடிவிடுகிறது.",
+433:           "winter": "<b>Why does pollution spike in winter?</b><br/><br/>In winter, cold air sinks to the ground. This creates a 'dome' over the city that traps vehicle exhaust, farm fires, and industrial smoke instead of letting it blow away. We call this 'winter inversion'.",
+434:           "health": "<b>Can bad air make me sick?</b><br/><br/>Yes. Extremely poor air causes immediate coughing, sneezing, and watery eyes. Long-term exposure to PM2.5 increases the risk of asthma, lung infections, and serious heart conditions. Protecting yourself is crucial.",
+435:           "protect": "<b>Basic Tips to Protect Yourself:</b><br/>1. Wear an N95 mask outdoors.<br/>2. Stay indoors with windows closed during peak hours (10 AM - 4 PM).<br/>3. Run a HEPA Air Purifier.<br/>4. Do not run or exercise outdoors when AQI is over 200.",
+436:           "safe_today": "<b>Is it safe today?</b><br/><br/>It completely depends on where you are! Please ask me about a specific area, for example: <i>'What is the air like in Punjabi Bagh?'</i> or <i>'Is it safe in IIT Delhi?'</i>"
+437:         },
+438:         hi: {
+439:           "aqi_def": "<b>AQI क्या है?</b><br/><br/>AQI (वायु गुणवत्ता सूचकांक) हवा के लिए एक थर्मामीटर की तरह है, जो 0 से 500 तक होता है। 50 से कम हवा ताज़ा और सुरक्षित होती है, लेकिन 300 से अधिक सांस लेने के लिए खतरनाक है।",
+440:           "mask": "<b>कौन सा मास्क पहनना चाहिए?</b><br/><br/>कपड़े या सर्जिकल मास्क प्रदूषण को <b>नहीं</b> रोकते! महीन धूल (PM2.5) से बचने के लिए <b>N95, N99, या FFP2</b> मास्क ही पहनें।",
+441:           "winter": "<b>सर्दियों में प्रदूषण क्यों बढ़ता है?</b><br/><br/>सर्दियों में ठंडी हवा नीचे बैठ जाती है, जो एक 'डोम' बनाती है, जिससे वाहनों का धुआं और औद्योगिक गैसें ऊपर नहीं उड़ पातीं। इसे 'विंटर इन्वर्जन' कहते हैं।",
+442:           "health": "<b>क्या खराब हवा मुझे बीमार कर सकती है?</b><br/><br/>हाँ। PM2.5 के लगातार प्रभाव से अस्थमा, फेफड़ों के संक्रमण और हृदय रोगों का खतरा काफी बढ़ जाता है। बचाव आवश्यक है।",
+443:           "protect": "<b>खुद को बचाने के टिप्स:</b><br/>1. बाहर जाते समय N95 मास्क पहनें।<br/>2. पीक आवर्स (सुबह 10 - शाम 4) में घर के अंदर रहें।<br/>3. HEPA एयर प्यूरीफायर चलाएं।<br/>4. AQI 200 के पार होने पर बाहर व्यायाम न करें।",
+444:           "safe_today": "<b>क्या आज बाहर जाना सुरक्षित है?</b><br/><br/>यह आपके क्षेत्र पर निर्भर करता है! कृपया किसी विशेष क्षेत्र के बारे में पूछें, जैसे: <i>'कनॉट प्लेस में हवा कैसी है?'</i>"
+445:         },
+446:         ta: {
+447:           "aqi_def": "<b>AQI என்றால் என்ன?</b><br/><br/>AQI (காற்றுத் தரக் குறியீடு) என்பது காற்றின் தரம் 0 முதல் 500 வரை அளவிடப்படும் ஒரு அளவுகோலாகும். 50-க்குக் குறைவாக இருந்தால் காற்று சுத்தமானது, ஆனால் 300-க்கு மேல் இருந்தால் சுவாசிப்பது ஆபத்தானது.",
+448:           "mask": "<b>எந்த முகக்கவசம் அணிய வேண்டும்?</b><br/><br/>துணி அல்லது அறுவை சிகிச்சை முகக்கவசங்கள் மாசுபாட்டைத் தடுக்காது! நுண்ணிய துகள்களிலிருந்து (PM2.5) தற்காத்துக் கொள்ள <b>N95, N99 அல்லது FFP2</b> முகக்கவசங்களை மட்டுமே அணியுங்கள்.",
+449:           "winter": "<b>குளிர்காலத்தில் மாசுபாடு ஏன் அதிகரிக்கிறது?</b><br/><br/>குளிர்காலத்தில் குளிர்ந்த காற்று தரை மட்டத்தில் தங்கிவிடும், இது வாகனப் புகை மற்றும் தூசியைச் சிதற விடாமல் தடுத்து ஒரு 'குடை' போன்று மூடிவிடுகிறது.",
           "protect": "<b>உங்களைப் பாதுகாத்துக் கொள்ள சில குறிப்புகள்:</b><br/>1. வெளியே செல்லும்போது N95 முகக்கவசம் அணியுங்கள்.<br/>2. ஜன்னல்களை மூடி வைக்கவும்.<br/>3. HEPA காற்று சுத்திகரிப்பானைப் பயன்படுத்தவும்.",
           "health": "<b>காற்று மாசுபாடு என்னை பாதிக்குமா?</b><br/><br/>ஆம். நீண்ட கால வெளிப்பாடு ஆஸ்துமா மற்றும் நுரையீரல் தொற்று அபாயத்தை அதிகரிக்கிறது.",
           "safe_today": "<b>இன்று வெளியே செல்வது பாதுகாப்பானதா?</b><br/><br/>இது உங்கள் பகுதியைப் பொறுத்தது! ஒரு குறிப்பிட்ட பகுதியைப் பற்றி என்னிடம் கேளுங்கள்."
@@ -494,7 +331,7 @@
         
         window.speechSynthesis.speak(utterance);
       }
-      const API_BASE = "http://localhost:8000";
+      const API_BASE = window.location.hostname === "localhost" ? "http://localhost:8000" : "";
       async function liveData(stKey){
         const st=STATIONS[stKey];
         const smap={};
@@ -727,8 +564,10 @@
       });
 
       document.getElementById("cb-trig").addEventListener("click",()=>{
+        panel.classList.toggle("open");
         if(panel.classList.contains("open") && API_KEY) startChat();
       });
+
       document.getElementById("cb-apikey-btn").addEventListener("click",()=>{
         const k=document.getElementById("cb-apikey-input").value.trim();
         if(k.length<10){document.getElementById("cb-apikey-input").style.borderColor="var(--cb-vpoor)";return;}
@@ -744,13 +583,13 @@
       document.getElementById("cb-inp").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();document.getElementById("cb-snd").click();}});
       document.getElementById("cb-inp").addEventListener("input",function(){this.style.height="auto";this.style.height=this.scrollHeight+"px";});
 
-      if(API_KEY){ setup.style.display="none"; }
-      
-      // Initialize chat unconditionally if API_KEY is set (which bypasses setup)
-      if(API_KEY && typeof window.startChat === 'function') {
-        window.startChat(true);
-      }
-    })();
-    </script>
+749:       if(API_KEY){ setup.style.display="none"; }
+750:       
+751:       // Initialize chat unconditionally if API_KEY is set (which bypasses setup)
+752:       if(API_KEY && typeof window.startChat === 'function') {
+753:         window.startChat(true);
+754:       }
+755:     })();
+756:     
   </body>
 </html>

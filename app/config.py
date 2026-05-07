@@ -17,6 +17,11 @@ OPENAQ_API_KEY = os.environ.get(
     "ba2848b20f917bf39f620703f7fd5b34eed51e5f77799f683e594ab3f60919c1"  # local dev fallback
 )
 
+GEMINI_API_KEY = os.environ.get(
+    "GEMINI_API_KEY",
+    "AIzaSyCy7hfqXH8bpGVv4uYb3sdH51y7MM8zJvs"
+)
+
 
 # Single source of truth for cities
 # Single source of truth for cities

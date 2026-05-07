@@ -340,3 +340,51 @@ def get_aqi_rankings():
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sensor/{location_id}")
+def proxy_openaq_sensor(location_id: int):
+    """
+    Proxy endpoint for the Chatbot to fetch sensor data without exposing the API key
+    to the frontend and bypassing CORS headers.
+    """
+    import requests
+    from app.config import OPENAQ_API_KEY
+    if not OPENAQ_API_KEY:
+        raise HTTPException(status_code=500, detail="Server OpenAQ API key not configured")
+        
+    url = f"https://api.openaq.org/v3/locations/{location_id}/latest"
+    headers = {"X-API-Key": OPENAQ_API_KEY, "Accept": "application/json"}
+    
+    try:
+        resp = requests.get(url, headers=headers, timeout=10)
+        resp.raise_for_status()
+        return resp.json()
+    except requests.exceptions.HTTPError as he:
+        if resp.status_code == 401:
+            raise HTTPException(status_code=401, detail="Invalid server OpenAQ API key")
+        raise HTTPException(status_code=resp.status_code, detail=f"OpenAQ error: {resp.text}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+from pydantic import BaseModel
+from typing import List, Dict, Any
+
+class ChatRequest(BaseModel):
+    history: List[Dict[str, Any]]
+    lang: str = "en"
+
+@app.post("/api/chat")
+def chat_endpoint(req: ChatRequest):
+    """
+    Receives Chat History from the JS Frontend and returns a contextual response
+    powered by Gemini LLM.
+    """
+    try:
+        from app.services.llm import generate_response
+        text = generate_response(req.history, lang=req.lang)
+        return {"response": text}
+    except Exception as e:
+        import traceback
+        print(traceback.format_exc())
+        raise HTTPException(status_code=500, detail=str(e))
+
