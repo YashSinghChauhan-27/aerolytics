@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-07T06:07:36.471939",
+  "generated_at": "2026-05-07T06:12:36.484340",
   "cities": [
     {
       "name": "Gurugram",
@@ -29,7 +29,7 @@
       "lat": 28.4646148,
       "lng": 77.0299194,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.448769"
+      "updated_at": "2026-05-07T06:12:36.460643"
     },
     {
       "name": "Delhi",
@@ -59,7 +59,7 @@
       "lat": 28.6138954,
       "lng": 77.2090057,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.446225"
+      "updated_at": "2026-05-07T06:12:36.458408"
     },
     {
       "name": "Chandigarh",
@@ -84,7 +84,7 @@
       "lat": 30.7334421,
       "lng": 76.7797143,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.437840"
+      "updated_at": "2026-05-07T06:12:36.451022"
     },
     {
       "name": "Jorapokhar",
@@ -109,7 +109,7 @@
       "lat": 23.7167069,
       "lng": 86.4110166,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.456981"
+      "updated_at": "2026-05-07T06:12:36.469105"
     },
     {
       "name": "Patna",
@@ -139,7 +139,7 @@
       "lat": 25.6093239,
       "lng": 85.1235252,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.465060"
+      "updated_at": "2026-05-07T06:12:36.477327"
     },
     {
       "name": "Mumbai",
@@ -169,7 +169,7 @@
       "lat": 19.054999,
       "lng": 72.8692035,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.463200"
+      "updated_at": "2026-05-07T06:12:36.475301"
     },
     {
       "name": "Amritsar",
@@ -199,7 +199,7 @@
       "lat": 31.6356659,
       "lng": 74.8787496,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.430130"
+      "updated_at": "2026-05-07T06:12:36.443591"
     },
     {
       "name": "Thiruvananthapuram",
@@ -229,7 +229,7 @@
       "lat": 8.4882267,
       "lng": 76.947551,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.470155"
+      "updated_at": "2026-05-07T06:12:36.482416"
     },
     {
       "name": "Bhopal",
@@ -259,7 +259,7 @@
       "lat": 23.2584857,
       "lng": 77.401989,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.435809"
+      "updated_at": "2026-05-07T06:12:36.449182"
     },
     {
       "name": "Jaipur",
@@ -289,7 +289,37 @@
       "lat": 26.9154576,
       "lng": 75.8189817,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.455518"
+      "updated_at": "2026-05-07T06:12:36.467682"
+    },
+    {
+      "name": "Guwahati",
+      "aqi": 172,
+      "category": "Moderate",
+      "dominant_pollutant": "O3",
+      "sub_indices": {
+        "PM2_5": 45,
+        "PM10": 40,
+        "NO2": 1,
+        "O3": 172,
+        "CO": 15
+      },
+      "data": {
+        "PM2_5": 26.93,
+        "PM10": 40.33,
+        "NO2": 1.1,
+        "CO": 296.0,
+        "O3": 149.0,
+        "Temperature_2m_C": 24.1,
+        "Relative_Humidity_%": 55.0,
+        "Wind_Speed_10m": 1.4,
+        "Surface_Pressure_hPa": 1007.5,
+        "Total_Precipitation_mm": 0.0
+      },
+      "pm25": 26.93,
+      "lat": 26.1805978,
+      "lng": 91.753943,
+      "state": "India",
+      "updated_at": "2026-05-07T06:12:36.463226"
     },
     {
       "name": "Talcher",
@@ -319,37 +349,7 @@
       "lat": 20.9322302,
       "lng": 85.2005822,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.468268"
-    },
-    {
-      "name": "Guwahati",
-      "aqi": 167,
-      "category": "Moderate",
-      "dominant_pollutant": "O3",
-      "sub_indices": {
-        "PM2_5": 45,
-        "PM10": 40,
-        "NO2": 1,
-        "O3": 167,
-        "CO": 15
-      },
-      "data": {
-        "PM2_5": 26.84,
-        "PM10": 40.48,
-        "NO2": 1.1,
-        "CO": 303.0,
-        "O3": 145.0,
-        "Temperature_2m_C": 24.1,
-        "Relative_Humidity_%": 55.0,
-        "Wind_Speed_10m": 1.4,
-        "Surface_Pressure_hPa": 1007.5,
-        "Total_Precipitation_mm": 0.0
-      },
-      "pm25": 26.84,
-      "lat": 26.1805978,
-      "lng": 91.753943,
-      "state": "India",
-      "updated_at": "2026-05-07T06:07:36.451083"
+      "updated_at": "2026-05-07T06:12:36.480525"
     },
     {
       "name": "Kochi",
@@ -379,7 +379,7 @@
       "lat": 9.9679032,
       "lng": 76.2444378,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.459003"
+      "updated_at": "2026-05-07T06:12:36.471244"
     },
     {
       "name": "Shillong",
@@ -404,7 +404,7 @@
       "lat": 25.5759931,
       "lng": 91.8827872,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.466412"
+      "updated_at": "2026-05-07T06:12:36.478592"
     },
     {
       "name": "Bengaluru",
@@ -434,7 +434,7 @@
       "lat": 12.9767936,
       "lng": 77.590082,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.433216"
+      "updated_at": "2026-05-07T06:12:36.446506"
     },
     {
       "name": "Kolkata",
@@ -464,7 +464,7 @@
       "lat": 22.5726459,
       "lng": 88.3638953,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.461137"
+      "updated_at": "2026-05-07T06:12:36.473234"
     },
     {
       "name": "Coimbatore",
@@ -494,7 +494,7 @@
       "lat": 11.0018115,
       "lng": 76.9628425,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.443485"
+      "updated_at": "2026-05-07T06:12:36.456028"
     },
     {
       "name": "Ahmedabad",
@@ -524,7 +524,7 @@
       "lat": 23.0215374,
       "lng": 72.5800568,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.415878"
+      "updated_at": "2026-05-07T06:12:36.432218"
     },
     {
       "name": "Hyderabad",
@@ -554,7 +554,7 @@
       "lat": 17.360589,
       "lng": 78.4740613,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.453344"
+      "updated_at": "2026-05-07T06:12:36.465575"
     },
     {
       "name": "Aizawl",
@@ -584,7 +584,7 @@
       "lat": 23.7277631,
       "lng": 92.7179947,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.423125"
+      "updated_at": "2026-05-07T06:12:36.436772"
     },
     {
       "name": "Amaravati",
@@ -614,7 +614,7 @@
       "lat": 16.494222,
       "lng": 80.5105858,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.427040"
+      "updated_at": "2026-05-07T06:12:36.440522"
     },
     {
       "name": "Visakhapatnam",
@@ -644,7 +644,7 @@
       "lat": 17.6935526,
       "lng": 83.2921297,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.471932"
+      "updated_at": "2026-05-07T06:12:36.484330"
     },
     {
       "name": "Chennai",
@@ -674,7 +674,7 @@
       "lat": 13.0836939,
       "lng": 80.270186,
       "state": "India",
-      "updated_at": "2026-05-07T06:07:36.440831"
+      "updated_at": "2026-05-07T06:12:36.453613"
     }
   ]
 }
